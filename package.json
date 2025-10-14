@@ -1,0 +1,33 @@
+{
+  "name": "sri-naga-kollepara-portfolio",
+  "version": "1.0.0",
+  "description": "A modern, responsive portfolio website for Sri Naga Kollepara - Data Engineer & Machine Learning Enthusiast",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 3000 -o",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "echo 'Ready for deployment to any static hosting service'"
+  },
+  "keywords": [
+    "portfolio",
+    "data-engineer",
+    "machine-learning",
+    "responsive",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Sri Naga Kollepara",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ksnmk/my-portfolio"
+  },
+  "homepage": "https://ksnmk.github.io/my-portfolio",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

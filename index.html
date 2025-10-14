@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Naga Kollepara - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="logo-circle">
+                    <span class="logo-text">SK</span>
+                </div>
+            </div>
+            <div class="loading-text">
+                <h2>Sri Naga Kollepara</h2>
+                <p>Loading Portfolio...</p>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">Sri Naga Kollepara</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="highlight">Sri Naga Kollepara</span>
+                    </h1>
+                    <h2 class="hero-subtitle">Data Engineer & Machine Learning Enthusiast</h2>
+                    <p class="hero-description">
+                        Computer Science graduate student with expertise in building scalable data processing pipelines, 
+                        developing predictive models, and deploying machine learning workflows.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                    
+                    
+                </div>
+                <div class="hero-image">
+                    <div class="profile-container">
+                        <div class="profile-image-wrapper">
+                            <div class="profile-image">
+                                <img src="profile-picture.jpg" alt="Sri Naga Kollepara" id="profileImg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="profile-placeholder" style="display: none;">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                            </div>
+                            <div class="profile-ring"></div>
+                            <div class="floating-elements">
+                                <div class="floating-element element-1">
+                                    <i class="fab fa-python"></i>
+                                </div>
+                                <div class="floating-element element-2">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="floating-element element-3">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="floating-element element-4">
+                                    <i class="fas fa-cloud"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="profile-info">
+                                <h3>Sri Naga Kollepara</h3>
+                                <p>Data Engineer & ML Engineer</p>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/sri-naga-kollepara-85ab291a1" target="_blank" class="social-link">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="mailto:snmk.kollepara@gmail.com" class="social-link">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                    <a href="https://github.com/ksnmk" target="_blank" class="social-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a Computer Science graduate student at the University of North Texas with a strong foundation 
+                        in Data Science, Machine Learning, Python, and SQL. I'm passionate about building scalable data 
+                        processing pipelines and developing predictive models that drive real-world impact.
+                    </p>
+                    <p>
+                        With experience as a Data Engineer at Accenture, I've worked on large-scale data projects, 
+                        developed ML models, and automated reporting workflows. I'm actively exploring opportunities 
+                        in data science, machine learning, and software engineering to contribute to impactful, 
+                        data-driven projects.
+                    </p>
+                    
+                    <div class="about-interests">
+                        <h4 class="about-subtitle">Interests</h4>
+                        <div class="about-chip-group" aria-label="Interests">
+                            <button type="button" class="about-chip" data-value="Data Engineering">Data Engineering</button>
+                            <button type="button" class="about-chip" data-value="Machine Learning">Machine Learning</button>
+                            <button type="button" class="about-chip" data-value="Recommenders">Recommenders</button>
+                            <button type="button" class="about-chip" data-value="MLOps">MLOps</button>
+                            <button type="button" class="about-chip" data-value="Visualization">Visualization</button>
+                        </div>
+                        <div class="about-selected" id="aboutSelected" aria-live="polite"></div>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>2+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat">
+                            <h3>10+</h3>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat">
+                            <h3>5+</h3>
+                            <p>Technologies Mastered</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-code"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Professional Experience</h2>
+                <p class="section-subtitle">Building scalable data solutions and driving business impact through technology</p>
+            </div>
+            
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="marker-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="marker-line"></div>
+                    </div>
+                    
+                    <div class="timeline-content">
+                        <div class="experience-header">
+                            <div class="company-info">
+                                <div class="company-logo">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="company-details">
+                                    <h3 class="job-title">Data Engineer</h3>
+                                    <h4 class="company-name">Accenture</h4>
+                                    <p class="location">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        Bangalore, India
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="experience-meta">
+                                <span class="duration">Sept 2021 - Aug 2023</span>
+                                <span class="employment-type">Full-time</span>
+                            </div>
+                        </div>
+                        
+                        <div class="experience-summary">
+                            <p>Led development of scalable data processing pipelines and machine learning solutions, delivering measurable business impact through advanced analytics and automation.</p>
+                        </div>
+                        
+                        <div class="achievements-section">
+                            <h5 class="achievements-title">
+                                <i class="fas fa-trophy"></i>
+                                Key Achievements
+                            </h5>
+                            <div class="achievements-grid">
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="achievement-content">
+                                        <h6>ETL Performance Optimization</h6>
+                                        <p>Built scalable data pipelines using PySpark and Hadoop to process large volumes of data across CSM Ingredients' financial and supply chain datasets</p>
+                                        <span class="achievement-metric">35% reduction in ETL runtime</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                    <div class="achievement-content">
+                                        <h6>ML Model Development</h6>
+                                        <p>Developed and deployed ML models using TensorFlow and Scikit-learn on AWS SageMaker to predict client financial trends</p>
+                                        <span class="achievement-metric">18% improvement in forecast accuracy</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-chart-bar"></i>
+                                    </div>
+                                    <div class="achievement-content">
+                                        <h6>Business Intelligence Automation</h6>
+                                        <p>Automated reporting workflows using SQL and Tableau dashboards, enabling business teams to access real-time KPIs</p>
+                                        <span class="achievement-metric">Real-time data-driven decisions</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="achievement-content">
+                                        <h6>Cross-functional Collaboration</h6>
+                                        <p>Collaborated with cross-functional teams in Agile sprints to integrate ML services into production via REST APIs</p>
+                                        <span class="achievement-metric">20% improvement in analytics delivery</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-database"></i>
+                                    </div>
+                                    <div class="achievement-content">
+                                        <h6>Data Architecture & Engineering</h6>
+                                        <p>Leveraged exploratory data analysis (EDA) and feature engineering on complex financial datasets to establish standardized data schemas</p>
+                                        <span class="achievement-metric">Standardized data infrastructure</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="technologies-used">
+                            <h5 class="tech-title">
+                                <i class="fas fa-tools"></i>
+                                Technologies & Tools
+                            </h5>
+                            <div class="tech-tags">
+                                <span class="tech-tag primary">Python</span>
+                                <span class="tech-tag primary">PySpark</span>
+                                <span class="tech-tag primary">Hadoop</span>
+                                <span class="tech-tag primary">TensorFlow</span>
+                                <span class="tech-tag primary">Scikit-learn</span>
+                                <span class="tech-tag secondary">AWS SageMaker</span>
+                                <span class="tech-tag secondary">SQL</span>
+                                <span class="tech-tag secondary">Tableau</span>
+                                <span class="tech-tag secondary">REST APIs</span>
+                                <span class="tech-tag secondary">Agile</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-content">
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3>Master of Science, Computer Science</h3>
+                        <span class="education-date">Aug 2023 - May 2025</span>
+                    </div>
+                    <p class="education-school">University of North Texas</p>
+                    <p class="education-location">Denton, TX</p>
+                    <div class="education-courses">
+                        <h4>Relevant Coursework:</h4>
+                        <div class="course-tags">
+                            <span class="course-tag">Machine Learning</span>
+                            <span class="course-tag">Data Mining</span>
+                            <span class="course-tag">Big Data and Data Science</span>
+                            <span class="course-tag">Fundamentals of Databases</span>
+                            <span class="course-tag">Software Development for AI</span>
+                            <span class="course-tag">Harvesting Storing & Retrieving Data</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Predictive Modelling for Earthquake Magnitude and Location</h3>
+                        <span class="project-date">Jan 2024 - Apr 2024</span>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Hadoop</span>
+                        <span class="tech-tag">PySpark</span>
+                        <span class="tech-tag">AWS S3</span>
+                    </div>
+                    <ul class="project-features">
+                        <li>Leveraged Apache Hadoop for distributed data storage and utilized Hadoop MapReduce and Apache Spark for comprehensive data processing of large seismic datasets</li>
+                        <li>Implemented, trained, and evaluated predictive models, including Random Forest with AdaBoost Regressor for magnitude prediction and Multi-Layer Perceptron Regressor for location prediction</li>
+                    </ul>
+                    
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Accommodation Connect</h3>
+                        <span class="project-date">Sept 2023 - Dec 2023</span>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Hugging Face</span>
+                        <span class="tech-tag">FastAPI</span>
+                    </div>
+                    <ul class="project-features">
+                        <li>Developed a full-stack web platform to assist students in discovering and posting accommodation listings, incorporating user authentication and roommate matching features</li>
+                        <li>Implemented a machine learning model using NLP techniques (Hugging Face Transformers) to analyze user preferences and bio descriptions, recommending compatible roommates</li>
+                        <li>Integrated a price prediction module using regression models to estimate fair rental prices based on location, amenities, and room features</li>
+                    </ul>
+                    
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Movie-Based Anime Recommendation System</h3>
+                        <span class="project-date">2024 - 2025</span>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">KNN</span>
+                        <span class="tech-tag">TF-IDF</span>
+                        <span class="tech-tag">Cosine Similarity</span>
+                        <span class="tech-tag">MovieLens</span>
+                        <span class="tech-tag">Kaggle Anime</span>
+                    </div>
+                    <ul class="project-features">
+                        <li>Hybrid recommender bridging user movie preferences to anime suggestions (CF + CBF).</li>
+                        <li>Cleaned and aligned MovieLens (9,742 movies) and Kaggle Anime (~16k) datasets.</li>
+                        <li>User–user and item–item KNN on ratings; TF‑IDF + cosine similarity on genres/synopses.</li>
+                        <li>Evaluated with Precision, Recall, Coverage, MAE/MSE; achieved ~93% precision, ~87% recall, ~83% coverage.</li>
+                        <li>Insights on genre skew and plans for diversification and feedback-driven tuning.</li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Data & Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Hugging Face</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Big Data & Data Engineering</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PySpark</span>
+                        <span class="skill-tag">Hadoop</span>
+                        <span class="skill-tag">Spark</span>
+                        <span class="skill-tag">MapReduce</span>
+                        <span class="skill-tag">ETL Pipelines</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Cloud & DevOps</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS (S3, EC2, SageMaker)</span>
+                        <span class="skill-tag">GCP (BigQuery, Dataproc)</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Visualization</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Power BI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always interested in new opportunities and collaborations. Feel free to reach out!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>728 W Collins St, Denton, TX</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (940) 222 7049</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:snmk.kollepara@gmail.com">snmk.kollepara@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/sri-naga-kollepara-85ab291a1" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/ksnmk" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:snmk.kollepara@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <div class="chip-group" aria-label="Interests">
+                                <button type="button" class="chip" data-value="General">General</button>
+                                <button type="button" class="chip" data-value="Collaboration">Collaboration</button>
+                                <button type="button" class="chip" data-value="Job Opportunity">Job Opportunity</button>
+                                <button type="button" class="chip" data-value="Freelance">Freelance</button>
+                                <input type="hidden" name="interest" id="interestField" value="">
+                            </div>
+                        </div>
+                        <div class="form-group mood-group">
+                            <label for="mood" class="mood-label">Mood: <span id="moodEmoji">🙂</span></label>
+                            <input type="range" id="mood" name="mood" min="0" max="4" value="2" step="1">
+                            <div class="mood-scale">
+                                <span>☹️</span><span>🙁</span><span>🙂</span><span>😊</span><span>🤩</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                            <div class="char-counter"><span id="charCount">0</span>/500</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-plane" id="sendBtn">
+                            <span class="btn-label">Send Message</span>
+                            <span class="plane" aria-hidden="true">✈️</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Sri Naga Kollepara. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
