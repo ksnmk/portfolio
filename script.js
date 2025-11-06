@@ -2789,7 +2789,7 @@ function createDownloadFeedback(button) {
     `;
     feedback.innerHTML = `
         <i class="fas fa-check-circle"></i>
-        <span>Resume download started!</span>
+        <span>Resume downloaded</span>
     `;
     
     // Add slide in animation
