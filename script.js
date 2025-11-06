@@ -2514,3 +2514,308 @@ const notificationStyles = `
 const styleSheet = document.createElement('style');
 styleSheet.textContent = notificationStyles;
 document.head.appendChild(styleSheet);
+
+// Enhanced Resume Download Button Interactions
+document.addEventListener('DOMContentLoaded', () => {
+    const downloadBtn = document.querySelector('.btn-download');
+    
+    if (downloadBtn) {
+        // Create shadow crawling animation to browser download icon on click
+        downloadBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get button position
+            const buttonRect = this.getBoundingClientRect();
+            const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+            const buttonCenterY = buttonRect.top + buttonRect.height / 2;
+            
+            // Target position (browser download icon - typically top-right)
+            // Chrome's download icon is usually around 20-30px from top and right
+            const targetX = window.innerWidth - 30;
+            const targetY = 25;
+            
+            // Calculate distance and angle
+            const deltaX = targetX - buttonCenterX;
+            const deltaY = targetY - buttonCenterY;
+            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+            
+            // Create shadow element with bedsheet-like appearance
+            const shadow = document.createElement('div');
+            shadow.className = 'download-shadow-crawler';
+            shadow.style.cssText = `
+                position: fixed;
+                left: ${buttonCenterX}px;
+                top: ${buttonCenterY}px;
+                width: 100px;
+                height: 100px;
+                background: radial-gradient(ellipse, 
+                    rgba(30, 30, 30, 0.7) 0%, 
+                    rgba(30, 30, 30, 0.5) 25%, 
+                    rgba(50, 50, 50, 0.3) 50%, 
+                    rgba(70, 70, 70, 0.15) 75%, 
+                    transparent 100%);
+                border-radius: 50%;
+                box-shadow: 0 0 50px rgba(0, 0, 0, 0.6),
+                            0 0 100px rgba(0, 0, 0, 0.4),
+                            inset 0 0 40px rgba(0, 0, 0, 0.3);
+                pointer-events: none;
+                z-index: 10000;
+                transform: translate(-50%, -50%);
+                opacity: 1;
+                filter: blur(3px);
+            `;
+            
+            document.body.appendChild(shadow);
+            
+            // Calculate wave parameters for bedsheet effect (needed for trail particles)
+            const waveAmplitude = 15; // Vertical undulation
+            const waveFrequency = 3; // Number of waves along the path
+            const pushUpAmount = 8; // Amount of "pushing up" effect
+            
+            // Add crawling animation styles if not exists
+            if (!document.querySelector('#download-shadow-crawler-styles')) {
+                const crawlerStyles = document.createElement('style');
+                crawlerStyles.id = 'download-shadow-crawler-styles';
+                crawlerStyles.textContent = `
+                    @keyframes shadowTrail {
+                        0% {
+                            opacity: 0.6;
+                            transform: translate(-50%, -50%) scale(1);
+                        }
+                        100% {
+                            opacity: 0;
+                            transform: translate(-50%, -50%) scale(0.5);
+                        }
+                    }
+                `;
+                document.head.appendChild(crawlerStyles);
+            }
+            
+            // Create trail particles along the wavy path
+            const trailCount = 15;
+            for (let i = 0; i < trailCount; i++) {
+                setTimeout(() => {
+                    const trail = document.createElement('div');
+                    const progress = i / trailCount;
+                    
+                    // Calculate base position
+                    const baseX = buttonCenterX + (deltaX * progress);
+                    const baseY = buttonCenterY + (deltaY * progress);
+                    
+                    // Add wavy movement to match shadow path
+                    const waveOffset = Math.sin(progress * Math.PI * waveFrequency) * waveAmplitude;
+                    const pushUp = Math.sin(progress * Math.PI) * pushUpAmount;
+                    const wobbleX = Math.sin(progress * Math.PI * 4) * 5;
+                    
+                    const trailX = baseX + wobbleX;
+                    const trailY = baseY + waveOffset - pushUp;
+                    
+                    trail.style.cssText = `
+                        position: fixed;
+                        left: ${trailX}px;
+                        top: ${trailY}px;
+                        width: ${25 - (i * 1.5)}px;
+                        height: ${25 - (i * 1.5)}px;
+                        background: radial-gradient(ellipse, 
+                            rgba(20, 20, 20, ${0.6 - (i * 0.03)}) 0%, 
+                            rgba(40, 40, 40, ${0.4 - (i * 0.02)}) 50%, 
+                            transparent 100%);
+                        border-radius: 50%;
+                        pointer-events: none;
+                        z-index: 9999;
+                        transform: translate(-50%, -50%);
+                        filter: blur(${2 + (i * 0.3)}px);
+                        animation: shadowTrail 0.8s ease-out forwards;
+                    `;
+                    
+                    document.body.appendChild(trail);
+                    
+                    setTimeout(() => {
+                        trail.remove();
+                    }, 800);
+                }, i * 40);
+            }
+            
+            // Animate shadow crawling with bedsheet-like undulating movement
+            const duration = Math.max(1500, distance / 0.8); // Slower movement - milliseconds
+            const startTime = performance.now();
+            const startX = buttonCenterX;
+            const startY = buttonCenterY;
+            
+            function animateShadow(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function (ease-out cubic) - smoother, slower
+                const easeProgress = 1 - Math.pow(1 - progress, 2.5);
+                
+                // Base position
+                const baseX = startX + (deltaX * easeProgress);
+                const baseY = startY + (deltaY * easeProgress);
+                
+                // Add wavy/undulating movement (like object under bedsheet)
+                const waveOffset = Math.sin(progress * Math.PI * waveFrequency) * waveAmplitude;
+                const pushUp = Math.sin(progress * Math.PI) * pushUpAmount; // Push up effect
+                
+                // Add some horizontal wobble for organic movement
+                const wobbleX = Math.sin(progress * Math.PI * 4) * 5;
+                
+                // Calculate final position with waves
+                const currentX = baseX + wobbleX;
+                const currentY = baseY + waveOffset - pushUp; // Negative for upward push
+                
+                // Scale and opacity changes
+                const currentScale = 1 - (easeProgress * 0.5);
+                const currentOpacity = 1 - (easeProgress * 0.6);
+                
+                // Add slight rotation that follows the wave
+                const currentRotate = waveOffset * 2; // Subtle rotation following wave
+                
+                // Blur increases as it moves (like shadow getting more diffused)
+                const currentBlur = 3 + (easeProgress * 10);
+                
+                // Apply transforms with bedsheet-like distortion
+                shadow.style.left = `${currentX}px`;
+                shadow.style.top = `${currentY}px`;
+                shadow.style.opacity = currentOpacity;
+                shadow.style.transform = `translate(-50%, -50%) scale(${currentScale}) rotate(${currentRotate}deg)`;
+                shadow.style.filter = `blur(${currentBlur}px)`;
+                
+                // Add some distortion to simulate fabric
+                const distortion = Math.sin(progress * Math.PI * 2) * 0.1;
+                shadow.style.borderRadius = `${50 + distortion * 10}%`;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animateShadow);
+                }
+            }
+            
+            // Start animation
+            requestAnimationFrame(animateShadow);
+            
+            // Add downloading state
+            this.classList.add('downloading');
+            
+            // Remove shadow after animation completes
+            setTimeout(() => {
+                shadow.remove();
+            }, duration + 100);
+            
+            // Simulate download completion
+            setTimeout(() => {
+                this.classList.remove('downloading');
+            }, duration + 200);
+            
+            // Trigger actual download after animation starts
+            setTimeout(() => {
+                const link = document.createElement('a');
+                link.href = this.getAttribute('href');
+                link.download = this.getAttribute('download') || 'resume.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }, 200);
+            
+            // Create success feedback after animation
+            setTimeout(() => {
+                createDownloadFeedback(this);
+            }, duration + 100);
+        });
+        
+        // Enhanced hover effects
+        downloadBtn.addEventListener('mouseenter', function() {
+            // Add subtle pulse effect
+            this.style.animation = 'downloadHoverPulse 2s ease-in-out infinite';
+            
+            // Add hover pulse animation if not exists
+            if (!document.querySelector('#download-hover-pulse')) {
+                const pulseStyles = document.createElement('style');
+                pulseStyles.id = 'download-hover-pulse';
+                pulseStyles.textContent = `
+                    @keyframes downloadHoverPulse {
+                        0%, 100% {
+                            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5),
+                                        0 0 30px rgba(37, 99, 235, 0.2) inset,
+                                        0 0 40px rgba(59, 130, 246, 0.3);
+                        }
+                        50% {
+                            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.6),
+                                        0 0 35px rgba(37, 99, 235, 0.3) inset,
+                                        0 0 50px rgba(59, 130, 246, 0.4);
+                        }
+                    }
+                `;
+                document.head.appendChild(pulseStyles);
+            }
+        });
+        
+        downloadBtn.addEventListener('mouseleave', function() {
+            this.style.animation = '';
+        });
+        
+        // Add focus styles for accessibility
+        downloadBtn.addEventListener('focus', function() {
+            this.style.outline = '2px solid rgba(59, 130, 246, 0.5)';
+            this.style.outlineOffset = '2px';
+        });
+        
+        downloadBtn.addEventListener('blur', function() {
+            this.style.outline = 'none';
+        });
+    }
+});
+
+// Create download feedback notification
+function createDownloadFeedback(button) {
+    // Create a temporary success indicator
+    const feedback = document.createElement('div');
+    feedback.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        animation: slideInRight 0.3s ease-out;
+        pointer-events: none;
+    `;
+    feedback.innerHTML = `
+        <i class="fas fa-check-circle"></i>
+        <span>Resume download started!</span>
+    `;
+    
+    // Add slide in animation
+    if (!document.querySelector('#download-feedback-anim')) {
+        const animStyles = document.createElement('style');
+        animStyles.id = 'download-feedback-anim';
+        animStyles.textContent = `
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(animStyles);
+    }
+    
+    document.body.appendChild(feedback);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        feedback.style.animation = 'slideInRight 0.3s ease-out reverse';
+        setTimeout(() => feedback.remove(), 300);
+    }, 3000);
+}

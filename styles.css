@@ -404,20 +404,99 @@ body {
 }
 
 .btn-download {
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
     color: white;
-    border: 2px solid transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3),
+                0 0 20px rgba(37, 99, 235, 0.1) inset;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-download::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
 }
 
 .btn-download:hover {
-    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 50%, #1e3a8a 100%);
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5),
+                0 0 30px rgba(37, 99, 235, 0.2) inset,
+                0 0 40px rgba(59, 130, 246, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-download:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-download:active {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
 }
 
 .btn-download i {
     margin-right: 8px;
     font-size: 0.95rem;
+    transition: transform 0.3s ease, margin-right 0.3s ease;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+}
+
+.btn-download > * {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-download:hover i {
+    transform: translateY(-2px) rotate(5deg);
+    margin-right: 10px;
+}
+
+.btn-download.downloading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.btn-download.downloading i {
+    animation: downloadPulse 1s ease-in-out infinite;
+}
+
+.btn-download.downloading::before {
+    animation: downloadShimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes downloadPulse {
+    0%, 100% {
+        transform: scale(1) translateY(0);
+    }
+    50% {
+        transform: scale(1.1) translateY(-3px);
+    }
+}
+
+@keyframes downloadShimmer {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
 }
 
 .btn i {
